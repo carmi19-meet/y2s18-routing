@@ -48,6 +48,13 @@ def delete_student(name):
 	session.query(Student).filter_by(
 		name=name).delete()
 	session.commit()
+def delete_all():
+	"""
+	Delete all students with a certain name
+	from the database.
+	"""
+	session.query(Student).delete()
+	session.commit()
 
 def update_lab_status(name, finished_lab):
 	"""
@@ -63,5 +70,10 @@ def query_by_id(student_id):
     student = session.query(Student).filter_by(
         student_id=student_id).first()
     return student
-
-add_student("moses", "Y2", True)
+#delete_student("moses")
+#add_student("jack", "Y2", True)
+#add_student("jesas", "Y2", False)
+#add_student("bob", "Y3", True)
+#add_student("abba", "Y1", False)
+#add_student("bassel", "Y1", True)
+#delete_all()

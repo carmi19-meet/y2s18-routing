@@ -2,13 +2,22 @@
 <html>
 <head>
     <title>Student</title>
-	<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
 </head>
 <body>
     <h1>This is the page for the student with id {{ student_id }}.</h1>
     <p><a href="{{url_for('home')}}">Home</a></p>
-    <p>the name of the student: {{ student.name }}</p>
-    <p>the year of the student: {{ student.year }}</p>
-    <p>finished the lab: {{ student.finished_lab }}</p>
+    {%for student1 in students%}
+    <p>the name of the student: {{ student1.name }}</p>
+    <p>the year of the student: {{ student1.year }}</p>
+    <p>finished the lab: {{ student1.finished_lab }}</p>
+    {% if student1.finished_lab==True%}
+    <img src="http://www.alertdriving.co.nz/uploads/1/4/8/0/14809288/alert-driving-school-passed-14_orig.gif" height="250" width="350">
+    <p>nice job!!! now try doing some extra stuff like i did when i wrote this ;)</p>
+    {% else %}
+    <img src="http://78.media.tumblr.com/1925005217b57dab59ba205346964cc7/tumblr_mn8bjxQ2sP1s12nr9o1_400.gif" height="250" width="350">
+    <p>you havn't finish the lab, so what are you doing reading this lines?!?! you have work to do!!!!!</p>
+    {% endif %}
+    {% endfor %}
 </body>
 </html>

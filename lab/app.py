@@ -9,7 +9,7 @@ def home():
 @app.route('/student/<int:student_id>')
 def display_student(student_id):
     student=query_by_id(student_id)
-    print(student)
-    return render_template('student.html', student=student)
+    students =query_all()
+    return render_template('student.html', student=student, students=students)
 
 app.run(debug=True)
